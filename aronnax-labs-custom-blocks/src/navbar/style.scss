@@ -15,6 +15,7 @@
 }
 
 .nav-hamburger {
+  display: none;
   position: relative;
   width: 30px;
   height: 24px;
@@ -28,6 +29,10 @@
 
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
   }
 
   span {
