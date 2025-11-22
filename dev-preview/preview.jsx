@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import SimpleNavbar from './SimpleNavbar';
+import SimpleNavbar from './navbar/SimpleNavbar';
 
 function App() {
   return (

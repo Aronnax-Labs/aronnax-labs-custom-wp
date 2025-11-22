@@ -3,14 +3,29 @@
   "apiVersion": 3,
   "name": "aronnax/navbar",
   "title": "Navbar",
-  "category": "aronnax-blocks",
+  "category": "theme",
   "icon": "menu",
-  "description": "Top header navigation bar",
+  "description": "Responsive navigation bar",
   "supports": {
     "html": false
   },
-  "textdomain": "aronnax-blocks",
+  "attributes": {
+    "logo": {
+      "type": "string",
+      "default": "Logo"
+    },
+    "menuItems": {
+      "type": "array",
+      "default": [
+        {"label": "Home", "url": "#"},
+        {"label": "About", "url": "#"},
+        {"label": "Services", "url": "#"},
+        {"label": "Contact", "url": "#"}
+      ]
+    }
+  },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
 }
