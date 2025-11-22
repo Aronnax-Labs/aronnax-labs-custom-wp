@@ -8,7 +8,11 @@
   "icon": "menu",
   "description": "Responsive navigation bar",
   "supports": {
-    "html": false
+    "html": false,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "attributes": {
     "logoImage": {

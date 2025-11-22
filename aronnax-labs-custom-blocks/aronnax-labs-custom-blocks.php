@@ -9,7 +9,7 @@
 if (!defined('ABSPATH')) exit;
 
 function aronnax_register_blocks() {
-    $blocks = ['navbar'];
+    $blocks = ['navbar', 'hero'];
     
     foreach ($blocks as $block) {
         register_block_type(__DIR__ . "/build/$block");

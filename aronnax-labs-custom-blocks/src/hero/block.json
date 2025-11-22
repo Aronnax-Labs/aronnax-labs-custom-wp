@@ -1,0 +1,85 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "aronnax-labs/hero",
+	"version": "0.1.0",
+	"title": "Hero Section",
+	"category": "design",
+	"icon": "cover-image",
+	"description": "Professional hero section with tagline, heading, CTA button, and image.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"fontFamily": true,
+			"fontWeight": true,
+			"textTransform": true,
+			"letterSpacing": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"link": true
+		},
+		"__experimentalBorder": {
+			"radius": true,
+			"color": true,
+			"width": true
+		}
+	},
+	"attributes": {
+		"tagline": {
+			"type": "string",
+			"default": "Welcome to"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Your Amazing Product"
+		},
+		"description": {
+			"type": "string",
+			"default": "Create something extraordinary with our innovative solution."
+		},
+		"ctaText": {
+			"type": "string",
+			"default": "Get Started"
+		},
+		"ctaUrl": {
+			"type": "string",
+			"default": "#"
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"imageId": {
+			"type": "number",
+			"default": 0
+		},
+		"imageAlt": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonFontFamily": {
+			"type": "string"
+		},
+		"buttonFontSize": {
+			"type": "string"
+		},
+		"buttonFontWeight": {
+			"type": "string"
+		}
+	},
+	"textdomain": "aronnax-labs-custom-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}
