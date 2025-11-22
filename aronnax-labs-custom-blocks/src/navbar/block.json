@@ -54,6 +54,10 @@
     "showExternalIcon": {
       "type": "boolean",
       "default": false
+    },
+    "maxWidth": {
+      "type": "number",
+      "default": 1200
     }
   },
   "editorScript": "file:./index.js",

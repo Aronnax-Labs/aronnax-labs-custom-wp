@@ -1,6 +1,6 @@
 import { useState } from '@wordpress/element';
 
-export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor, showExternalIcon }) {
+export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor, showExternalIcon, maxWidth }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navStyle = {
@@ -11,6 +11,7 @@ export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backg
 
   return (
     <nav className="simple-navbar" style={navStyle}>
+      <div style={{ maxWidth: `${maxWidth || 1200}px`, width: '100%', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <a href={homeUrl || '/'} className="nav-logo" style={{ color: logoColor || '#333', display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', outline: 'none' }}>
         {logoImage && <img src={logoImage} alt="Logo" style={{ height: '32px', width: 'auto' }} />}
         <span>{siteTitle}</span>
@@ -37,6 +38,7 @@ export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backg
           </li>
         ))}
       </ul>
+      </div>
     </nav>
   );
 }

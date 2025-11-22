@@ -11,6 +11,7 @@ export default function save({ attributes }) {
   return (
     <div {...useBlockProps.save()}>
       <nav className="simple-navbar" style={navStyle}>
+        <div style={{ maxWidth: `${attributes.maxWidth || 1200}px`, width: '100%', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <a href={attributes.homeUrl} className="nav-logo" style={{ color: attributes.logoColor, display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', outline: 'none' }}>
           {attributes.logoImage && <img src={attributes.logoImage} alt="Logo" style={{ height: '32px', width: 'auto' }} />}
           <span>{attributes.siteTitle}</span>
@@ -36,6 +37,7 @@ export default function save({ attributes }) {
             </li>
           ))}
         </ul>
+        </div>
       </nav>
     </div>
   );

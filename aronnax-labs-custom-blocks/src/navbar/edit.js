@@ -3,7 +3,7 @@ import { PanelBody, TextControl, Button, ToggleControl, RangeControl } from '@wo
 import Navbar from './Navbar';
 
 export default function Edit({ attributes, setAttributes }) {
-  const { logoImage, siteTitle, homeUrl, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor, showExternalIcon } = attributes;
+  const { logoImage, siteTitle, homeUrl, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor, showExternalIcon, maxWidth } = attributes;
   const menuItems = attributes.menuItems || [
     {"label": "Home", "url": "#", "newTab": false},
     {"label": "About", "url": "#", "newTab": false},
@@ -58,7 +58,16 @@ export default function Edit({ attributes, setAttributes }) {
             }
           ]}
         />
-        <PanelBody title="Border">
+        <PanelBody title="Layout">
+          <RangeControl
+            label="Max Width (px)"
+            value={maxWidth}
+            onChange={(value) => setAttributes({ maxWidth: value })}
+            min={600}
+            max={1920}
+            step={10}
+            help="Maximum width of navbar content"
+          />
           <RangeControl
             label="Border Width"
             value={borderWidth}
@@ -136,7 +145,7 @@ export default function Edit({ attributes, setAttributes }) {
         </PanelBody>
       </InspectorControls>
       <div {...useBlockProps()}>
-        <Navbar logoImage={logoImage} siteTitle={siteTitle} homeUrl={homeUrl} menuItems={menuItems} backgroundColor={backgroundColor} logoColor={logoColor} menuColor={menuColor} borderWidth={borderWidth} borderColor={borderColor} hamburgerColor={hamburgerColor} showExternalIcon={showExternalIcon} />
+        <Navbar logoImage={logoImage} siteTitle={siteTitle} homeUrl={homeUrl} menuItems={menuItems} backgroundColor={backgroundColor} logoColor={logoColor} menuColor={menuColor} borderWidth={borderWidth} borderColor={borderColor} hamburgerColor={hamburgerColor} showExternalIcon={showExternalIcon} maxWidth={maxWidth} />
       </div>
     </>
   );
