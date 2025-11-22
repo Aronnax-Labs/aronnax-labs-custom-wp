@@ -1,6 +1,6 @@
 import { useState } from '@wordpress/element';
 
-export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor }) {
+export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor, showExternalIcon }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navStyle = {
@@ -30,7 +30,10 @@ export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backg
       <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
         {menuItems.map((item, index) => (
           <li key={index}>
-            <a href={item.url} target={item.newTab ? '_blank' : '_self'} rel={item.newTab ? 'noopener noreferrer' : undefined} style={{ color: menuColor || '#666', outline: 'none' }}>{item.label}</a>
+            <a href={item.url} target={item.newTab ? '_blank' : '_self'} rel={item.newTab ? 'noopener noreferrer' : undefined} style={{ color: menuColor || '#666', outline: 'none' }}>
+              {item.label}
+              {showExternalIcon && item.newTab && <span style={{ marginLeft: '4px' }}>↗</span>}
+            </a>
           </li>
         ))}
       </ul>

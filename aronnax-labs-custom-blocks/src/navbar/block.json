@@ -50,6 +50,10 @@
     "hamburgerColor": {
       "type": "string",
       "default": "#333333"
+    },
+    "showExternalIcon": {
+      "type": "boolean",
+      "default": false
     }
   },
   "editorScript": "file:./index.js",

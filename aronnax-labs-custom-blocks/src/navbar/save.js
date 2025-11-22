@@ -29,7 +29,10 @@ export default function save({ attributes }) {
         <ul className="nav-links">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <a href={item.url} target={item.newTab ? '_blank' : '_self'} rel={item.newTab ? 'noopener noreferrer' : undefined} style={{ color: attributes.menuColor, outline: 'none' }}>{item.label}</a>
+              <a href={item.url} target={item.newTab ? '_blank' : '_self'} rel={item.newTab ? 'noopener noreferrer' : undefined} style={{ color: attributes.menuColor, outline: 'none' }}>
+                {item.label}
+                {attributes.showExternalIcon && item.newTab && <span style={{ marginLeft: '4px' }}>↗</span>}
+              </a>
             </li>
           ))}
         </ul>

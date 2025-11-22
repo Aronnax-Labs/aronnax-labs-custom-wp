@@ -3,7 +3,7 @@ import { PanelBody, TextControl, Button, ToggleControl, RangeControl } from '@wo
 import Navbar from './Navbar';
 
 export default function Edit({ attributes, setAttributes }) {
-  const { logoImage, siteTitle, homeUrl, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor } = attributes;
+  const { logoImage, siteTitle, homeUrl, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor, showExternalIcon } = attributes;
   const menuItems = attributes.menuItems || [
     {"label": "Home", "url": "#", "newTab": false},
     {"label": "About", "url": "#", "newTab": false},
@@ -102,6 +102,12 @@ export default function Edit({ attributes, setAttributes }) {
           />
         </PanelBody>
         <PanelBody title="Menu Items" initialOpen={true}>
+          <ToggleControl
+            label="Show arrow icon for external links"
+            checked={showExternalIcon}
+            onChange={(value) => setAttributes({ showExternalIcon: value })}
+            help="Display an arrow icon next to links that open in a new tab"
+          />
           {menuItems.map((item, index) => (
             <div key={index} style={{ marginBottom: '16px', padding: '12px', border: '1px solid #ddd' }}>
               <TextControl
@@ -130,7 +136,7 @@ export default function Edit({ attributes, setAttributes }) {
         </PanelBody>
       </InspectorControls>
       <div {...useBlockProps()}>
-        <Navbar logoImage={logoImage} siteTitle={siteTitle} homeUrl={homeUrl} menuItems={menuItems} backgroundColor={backgroundColor} logoColor={logoColor} menuColor={menuColor} borderWidth={borderWidth} borderColor={borderColor} hamburgerColor={hamburgerColor} />
+        <Navbar logoImage={logoImage} siteTitle={siteTitle} homeUrl={homeUrl} menuItems={menuItems} backgroundColor={backgroundColor} logoColor={logoColor} menuColor={menuColor} borderWidth={borderWidth} borderColor={borderColor} hamburgerColor={hamburgerColor} showExternalIcon={showExternalIcon} />
       </div>
     </>
   );
