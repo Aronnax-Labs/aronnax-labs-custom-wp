@@ -20,7 +20,7 @@ export default function Navbar({ logo, menuItems }) {
       <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
         {menuItems.map((item, index) => (
           <li key={index}>
-            <a href={item.url}>{item.label}</a>
+            <a href={item.url} target={item.newTab ? '_blank' : '_self'} rel={item.newTab ? 'noopener noreferrer' : undefined}>{item.label}</a>
           </li>
         ))}
       </ul>

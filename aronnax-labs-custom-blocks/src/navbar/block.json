@@ -17,10 +17,10 @@
     "menuItems": {
       "type": "array",
       "default": [
-        {"label": "Home", "url": "#"},
-        {"label": "About", "url": "#"},
-        {"label": "Services", "url": "#"},
-        {"label": "Contact", "url": "#"}
+        {"label": "Home", "url": "#", "newTab": false},
+        {"label": "About", "url": "#", "newTab": false},
+        {"label": "Services", "url": "#", "newTab": false},
+        {"label": "Contact", "url": "#", "newTab": false}
       ]
     }
   },
