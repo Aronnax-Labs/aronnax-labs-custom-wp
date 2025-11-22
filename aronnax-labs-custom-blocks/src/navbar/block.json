@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "aronnax/navbar",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "title": "Navbar",
   "category": "theme",
   "icon": "menu",
@@ -25,12 +25,7 @@
     },
     "menuItems": {
       "type": "array",
-      "default": [
-        {"label": "Home", "url": "#", "newTab": false},
-        {"label": "About", "url": "#", "newTab": false},
-        {"label": "Services", "url": "#", "newTab": false},
-        {"label": "Contact", "url": "#", "newTab": false}
-      ]
+      "default": []
     },
     "backgroundColor": {
       "type": "string",
@@ -43,6 +38,18 @@
     "menuColor": {
       "type": "string",
       "default": "#666666"
+    },
+    "borderWidth": {
+      "type": "number",
+      "default": 1
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#e0e0e0"
+    },
+    "hamburgerColor": {
+      "type": "string",
+      "default": "#333333"
     }
   },
   "editorScript": "file:./index.js",

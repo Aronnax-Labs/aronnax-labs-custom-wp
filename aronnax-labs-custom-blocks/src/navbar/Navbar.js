@@ -1,10 +1,12 @@
 import { useState } from '@wordpress/element';
 
-export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backgroundColor, logoColor, menuColor }) {
+export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navStyle = {
-    backgroundColor: backgroundColor || '#ffffff'
+    backgroundColor: backgroundColor || '#ffffff',
+    borderBottomWidth: `${borderWidth || 1}px`,
+    borderBottomColor: borderColor || '#e0e0e0'
   };
 
   return (
@@ -20,9 +22,9 @@ export default function Navbar({ logoImage, siteTitle, homeUrl, menuItems, backg
         aria-label="Menu"
         style={{ background: 'none' }}
       >
-        <span style={{ backgroundColor: menuColor || '#666' }}></span>
-        <span style={{ backgroundColor: menuColor || '#666' }}></span>
-        <span style={{ backgroundColor: menuColor || '#666' }}></span>
+        <span style={{ backgroundColor: hamburgerColor || '#333' }}></span>
+        <span style={{ backgroundColor: hamburgerColor || '#333' }}></span>
+        <span style={{ backgroundColor: hamburgerColor || '#333' }}></span>
       </button>
 
       <ul className={`nav-links ${isOpen ? 'open' : ''}`}>

@@ -1,9 +1,15 @@
 import { useBlockProps, InspectorControls, PanelColorSettings, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { PanelBody, TextControl, Button, ToggleControl } from '@wordpress/components';
+import { PanelBody, TextControl, Button, ToggleControl, RangeControl } from '@wordpress/components';
 import Navbar from './Navbar';
 
 export default function Edit({ attributes, setAttributes }) {
-  const { logoImage, siteTitle, homeUrl, menuItems, backgroundColor, logoColor, menuColor } = attributes;
+  const { logoImage, siteTitle, homeUrl, backgroundColor, logoColor, menuColor, borderWidth, borderColor, hamburgerColor } = attributes;
+  const menuItems = attributes.menuItems || [
+    {"label": "Home", "url": "#", "newTab": false},
+    {"label": "About", "url": "#", "newTab": false},
+    {"label": "Services", "url": "#", "newTab": false},
+    {"label": "Contact", "url": "#", "newTab": false}
+  ];
 
   const updateMenuItem = (index, field, value) => {
     const newItems = [...menuItems];
@@ -39,9 +45,28 @@ export default function Edit({ attributes, setAttributes }) {
               value: menuColor,
               onChange: (value) => setAttributes({ menuColor: value }),
               label: 'Menu Color'
+            },
+            {
+              value: borderColor,
+              onChange: (value) => setAttributes({ borderColor: value }),
+              label: 'Border Color'
+            },
+            {
+              value: hamburgerColor,
+              onChange: (value) => setAttributes({ hamburgerColor: value }),
+              label: 'Hamburger Icon Color'
             }
           ]}
         />
+        <PanelBody title="Border">
+          <RangeControl
+            label="Border Width"
+            value={borderWidth}
+            onChange={(value) => setAttributes({ borderWidth: value })}
+            min={0}
+            max={10}
+          />
+        </PanelBody>
         <PanelBody title="Navbar Settings">
           <MediaUploadCheck>
             <MediaUpload
@@ -105,7 +130,7 @@ export default function Edit({ attributes, setAttributes }) {
         </PanelBody>
       </InspectorControls>
       <div {...useBlockProps()}>
-        <Navbar logoImage={logoImage} siteTitle={siteTitle} homeUrl={homeUrl} menuItems={menuItems} backgroundColor={backgroundColor} logoColor={logoColor} menuColor={menuColor} />
+        <Navbar logoImage={logoImage} siteTitle={siteTitle} homeUrl={homeUrl} menuItems={menuItems} backgroundColor={backgroundColor} logoColor={logoColor} menuColor={menuColor} borderWidth={borderWidth} borderColor={borderColor} hamburgerColor={hamburgerColor} />
       </div>
     </>
   );
