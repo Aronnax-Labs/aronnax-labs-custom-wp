@@ -1,9 +1,9 @@
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, PanelColorSettings, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import { PanelBody, TextControl, Button, ToggleControl } from '@wordpress/components';
 import Navbar from './Navbar';
 
 export default function Edit({ attributes, setAttributes }) {
-  const { logo, menuItems } = attributes;
+  const { logoImage, siteTitle, homeUrl, menuItems, backgroundColor, logoColor, menuColor } = attributes;
 
   const updateMenuItem = (index, field, value) => {
     const newItems = [...menuItems];
@@ -22,11 +22,58 @@ export default function Edit({ attributes, setAttributes }) {
   return (
     <>
       <InspectorControls>
+        <PanelColorSettings
+          title="Colors"
+          colorSettings={[
+            {
+              value: backgroundColor,
+              onChange: (value) => setAttributes({ backgroundColor: value }),
+              label: 'Background Color'
+            },
+            {
+              value: logoColor,
+              onChange: (value) => setAttributes({ logoColor: value }),
+              label: 'Logo Color'
+            },
+            {
+              value: menuColor,
+              onChange: (value) => setAttributes({ menuColor: value }),
+              label: 'Menu Color'
+            }
+          ]}
+        />
         <PanelBody title="Navbar Settings">
+          <MediaUploadCheck>
+            <MediaUpload
+              onSelect={(media) => setAttributes({ logoImage: media.url })}
+              allowedTypes={['image']}
+              value={logoImage}
+              render={({ open }) => (
+                <div>
+                  <Button onClick={open} variant="secondary">
+                    {logoImage ? 'Change Logo Image' : 'Upload Logo Image'}
+                  </Button>
+                  {logoImage && (
+                    <div style={{ marginTop: '8px' }}>
+                      <img src={logoImage} alt="Logo" style={{ maxWidth: '100px', display: 'block', marginBottom: '8px' }} />
+                      <Button isDestructive onClick={() => setAttributes({ logoImage: '' })}>
+                        Remove Image
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              )}
+            />
+          </MediaUploadCheck>
           <TextControl
-            label="Logo Text"
-            value={logo}
-            onChange={(value) => setAttributes({ logo: value })}
+            label="Site Title"
+            value={siteTitle}
+            onChange={(value) => setAttributes({ siteTitle: value })}
+          />
+          <TextControl
+            label="Home URL"
+            value={homeUrl}
+            onChange={(value) => setAttributes({ homeUrl: value })}
           />
         </PanelBody>
         <PanelBody title="Menu Items" initialOpen={true}>
@@ -58,7 +105,7 @@ export default function Edit({ attributes, setAttributes }) {
         </PanelBody>
       </InspectorControls>
       <div {...useBlockProps()}>
-        <Navbar logo={logo} menuItems={menuItems} />
+        <Navbar logoImage={logoImage} siteTitle={siteTitle} homeUrl={homeUrl} menuItems={menuItems} backgroundColor={backgroundColor} logoColor={logoColor} menuColor={menuColor} />
       </div>
     </>
   );

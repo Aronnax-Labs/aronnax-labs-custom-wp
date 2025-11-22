@@ -10,9 +10,17 @@
     "html": false
   },
   "attributes": {
-    "logo": {
+    "logoImage": {
       "type": "string",
-      "default": "Logo"
+      "default": ""
+    },
+    "siteTitle": {
+      "type": "string",
+      "default": "Site Title"
+    },
+    "homeUrl": {
+      "type": "string",
+      "default": "/"
     },
     "menuItems": {
       "type": "array",
@@ -22,6 +30,18 @@
         {"label": "Services", "url": "#", "newTab": false},
         {"label": "Contact", "url": "#", "newTab": false}
       ]
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "logoColor": {
+      "type": "string",
+      "default": "#333333"
+    },
+    "menuColor": {
+      "type": "string",
+      "default": "#666666"
     }
   },
   "editorScript": "file:./index.js",
