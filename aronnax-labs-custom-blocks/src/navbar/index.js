@@ -1,6 +1,8 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, Button } from '@wordpress/components';
+import { useState } from '@wordpress/element';
+import HamburgerMenu from 'react-animated-burgers';
 import './style.css';
 
 registerBlockType('aronnax/navbar', {
@@ -20,6 +22,8 @@ registerBlockType('aronnax/navbar', {
         }
     },
     edit: ({ attributes, setAttributes }) => {
+        const [menuOpen, setMenuOpen] = useState(false);
+        
         const updateMenuItem = (index, field, value) => {
             const newItems = [...attributes.menuItems];
             newItems[index][field] = value;
@@ -70,8 +74,16 @@ registerBlockType('aronnax/navbar', {
                 </InspectorControls>
                 <nav className="aronnax-navbar">
                     <div className="navbar-logo">{attributes.logo}</div>
-                    <button className="navbar-toggle">☰</button>
-                    <ul className="navbar-menu">
+                    <div className="navbar-toggle">
+                        <HamburgerMenu 
+                            isActive={menuOpen}
+                            toggleButton={() => setMenuOpen(!menuOpen)}
+                            barColor="#333"
+                            buttonWidth={24}
+                            type="squeeze"
+                        />
+                    </div>
+                    <ul className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
                         {attributes.menuItems.map((item, index) => (
                             <li key={index}>
                                 <a href={item.url}>{item.text}</a>
@@ -84,15 +96,10 @@ registerBlockType('aronnax/navbar', {
     },
     save: ({ attributes }) => {
         return (
-            <nav className="aronnax-navbar">
+            <nav className="aronnax-navbar" data-navbar>
                 <div className="navbar-logo">{attributes.logo}</div>
-                <button 
-                    className="navbar-toggle"
-                    onClick={(e) => e.target.nextElementSibling.classList.toggle('active')}
-                >
-                    ☰
-                </button>
-                <ul className="navbar-menu">
+                <div className="navbar-toggle" data-navbar-toggle></div>
+                <ul className="navbar-menu" data-navbar-menu>
                     {attributes.menuItems.map((item, index) => (
                         <li key={index}>
                             <a href={item.url}>{item.text}</a>
